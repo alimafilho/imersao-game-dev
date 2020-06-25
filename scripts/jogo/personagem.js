@@ -1,24 +1,18 @@
 class Personagem{
   constructor(imagem){
     this.imagem = imagem;
-    this.matriz = [
-      [0, 0], 
-      [220, 0], 
-      [440, 0], 
-      [660, 0], 
-      [0, 270], 
-      [220, 270], 
-      [440, 270], 
-      [660, 270], 
-      [0, 540], 
-      [220, 540], 
-      [440, 540], 
-      [660, 540], 
-      [0, 810], 
-      [220, 810], 
-      [440, 810], 
-      [660, 810]];
+    this.matriz = this.calc(220, 270, 4, 4);
     this.frameAtual = 0;
+  }
+
+  calc(largura, altura, colunas, linhas) {
+    let matriz = [];
+    for(let i=0; i < linhas; i++) {
+      for(let j=0; j < colunas; j++) {
+        matriz.push([j*largura, i*altura]);
+      } 
+    }
+    return matriz;
   }
   
   exibe(){
