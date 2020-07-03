@@ -1,8 +1,41 @@
-class Personagem{
-  constructor(imagem){
-    this.imagem = imagem;
-    this.matriz = this.calc(220, 270, 4, 4);
-    this.frameAtual = 0;
+class Personagem extends Animacao{
+  constructor(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite){
+    super(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite);
+    
+    this.yInicial = height - this.altura;
+    this.y = this.yInicial;
+    
+    this.velocidadeDoPulo = 0;
+    this.gravidade = 3;
+  }
+  
+  pula() {
+    this.velocidadeDoPulo = -30
+  }
+  
+  aplicaGravidade() {
+    this.y = this.y + this.velocidadeDoPulo
+    this.velocidadeDoPulo = this.velocidadeDoPulo + this.gravidade
+    
+    if(this.y > this.yInicial){
+      this.y = this.yInicial
+    }
+  }
+  
+  estaColidindo(inimigo) {
+    const precisao = .7
+    const colisao = collideRectRect(
+      this.x, 
+      this.y, 
+      this.largura * precisao, 
+      this.altura * precisao,
+      inimigo.x,
+      inimigo.y,
+      inimigo.largura * precisao,
+      inimigo.altura * precisao
+    );
+    
+    return colisao;
   }
 
   calc(largura, altura, colunas, linhas) {
@@ -14,19 +47,5 @@ class Personagem{
     }
     return matriz;
   }
-  
-  exibe(){
-    image(this.imagem, 0, height-135, 110, 130, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], 220, 270);
-    
-    this.anima();
-  }
-  
-  anima() {
-    if (this.frameAtual < this.matriz.length -1) {
-      this.frameAtual++
-    } else {
-      this.frameAtual = 0;
-    }
-    
-  }
+
 }

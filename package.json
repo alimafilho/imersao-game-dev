@@ -1,0 +1,27 @@
+{
+  "name": "imersao-game-dev",
+  "version": "1.0.0",
+  "description": "[https://www.alura.com.br/imersao-gamedev-javascript/aula01-game-personagem-animacao](https://www.alura.com.br/imersao-gamedev-javascript/aula01-game-personagem-animacao)",
+  "main": "p5.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alimafilho/imersao-game-dev.git"
+  },
+  "keywords": ["javascript", "p5js", "game"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alimafilho/imersao-game-dev/issues"
+  },
+  "homepage": "https://github.com/alimafilho/imersao-game-dev#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
